@@ -1,0 +1,5 @@
+import org.apache.hadoop.mapreduce.Mapper;
+
+public class WordMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
+
+}

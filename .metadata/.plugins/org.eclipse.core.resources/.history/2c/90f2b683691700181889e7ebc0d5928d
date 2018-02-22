@@ -1,0 +1,4 @@
+org.apache.hadoop.mapreduce;
+public class WordReducer {
+
+}

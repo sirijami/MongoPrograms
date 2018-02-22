@@ -1,0 +1,11 @@
+import org.apache.hadoop.mapreduce.Mapper;
+
+public class WordMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
+	
+	private final static LongWritable one = new LongWritable();
+	 @Override
+	 protected void map(LongWritable key, Text value, Context context){
+		 
+	 }
+
+}

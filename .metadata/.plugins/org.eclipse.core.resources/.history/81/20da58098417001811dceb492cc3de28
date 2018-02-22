@@ -1,0 +1,37 @@
+
+import java.io.IOException;
+
+import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.mapreduce.Reducer;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
+
+
+public class WordCountM {
+
+	public static void main(String[] args) throws IOException {
+		/* Create a Job */
+		Job job = Job.getInstance();
+//		job.setJarByClass(WordCountM.class);
+		
+		/* Create map and reduce class */
+		job.setMapperClass(WordMapper.class);
+		
+        /* Set Combiner */
+		job.setCombinerClass(WordReducer.class);
+		job.setReducerClass(WordReducer.class);
+		
+		/* Set Input and output format classes */
+		job.setInputFormatClass(TextInputFormat.class);
+		job.setOutputFormatClass(TextOutputFormat.class);
+	
+		
+		/* Set input & output format */
+		FileInputFormat.addInputPath(job, new path(args[0]));
+		FileOutputFormat.setOutputPath(job, new path(args[1]));
+	}
+
+}
