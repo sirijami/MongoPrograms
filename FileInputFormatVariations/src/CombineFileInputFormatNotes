@@ -1,0 +1,11 @@
+Combine File Input Format
+---------------------------
+It's an abstract class without any concrete class unlike File Input Format.
+To have combine file Input Format we need to create custom class which extends CombineFileInputFormat and 
+implement the getRecordReader() method.
+
+When to use combine File Input Format?
+---------------------------------------
+It combines many small files into a split providing more data for each map tasks.
+It considers data locality so performance is not compromised.
+

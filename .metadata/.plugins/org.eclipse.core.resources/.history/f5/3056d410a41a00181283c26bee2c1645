@@ -1,0 +1,14 @@
+import org.apache.hadoop.conf.Configuration;
+
+
+public class empDriver {
+
+	public static void main(String[] args) {
+		Configuration conf = new Configuration();
+		conf.set("mapreduce.max.split.size" , "1048576"); // Max split size as 1MB
+		
+		Job job = new Job(conf, "emp Salary");
+
+	}
+
+}

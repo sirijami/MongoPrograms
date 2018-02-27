@@ -1,0 +1,18 @@
+import java.io.IOException;
+
+import org.apache.hadoop.io.FloatWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.mapreduce.Mapper.Context;
+
+
+	public class Avg_StockHighMapper extends Mapper<Object, Text, Text, FloatWritable> {
+		@Override
+		protected void map(Object key, Text value, Context context)
+				throws IOException, InterruptedException {
+			String[] temp = value.toString().split(",");
+			String symbol = new String(temp[1]);
+			Float stockHigh = new Float(temp[4]);
+			context.write(new Text(symbol), new FloatWritable(stockHigh));
+		}
+	}

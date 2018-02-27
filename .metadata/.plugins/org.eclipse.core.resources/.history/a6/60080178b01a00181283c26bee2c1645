@@ -1,0 +1,5 @@
+package FixedLengthInputFormatPackage;
+
+public class myFixedLengthFileRecordReader {
+
+}

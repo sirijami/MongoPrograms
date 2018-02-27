@@ -1,0 +1,24 @@
+import java.io.IOException;
+
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.FileSystem;
+import org.apache.hadoop.fs.Path;
+
+
+public class putMerge {
+
+	public static void main(String[] args) throws IOException {
+		Configuration conf = new Configuration();
+		FileSystem hdfs = FileSystem.get(conf);
+		FileSystem local = FileSystem.getLocal(conf);
+		
+		Path inputDir = new Path(args[0]);
+		Path hdfsFile = new Path(args[1]);
+		
+		
+		
+		
+
+	}
+
+}

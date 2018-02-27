@@ -1,0 +1,40 @@
+import java.io.IOException;
+
+import org.apache.hadoop.io.FloatWritable;
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.mapreduce.Reducer;
+
+
+public class Driver {
+
+	public static void main(String[] args) {
+		
+
+	}
+	
+	public static class ratingsMapper extends Mapper<Object, Text, IntWritable, IntWritable>{
+
+		@Override
+		protected void map(Object key, Text value,Context context)
+				throws IOException, InterruptedException {
+			String[] temp = value.toString().split("::");
+			context.write(new IntWritable(Integer.parseInt(temp[1])), new IntWritable(Integer.parseInt(temp[2])));
+		}
+		
+	}
+	
+	public static class ratingsReducer extends Reducer<IntWritable, IntWritable, IntWritable, FloatWritable>{
+
+		@Override
+		protected void reduce(IntWritable arg0,Iterable<IntWritable> arg1,Context arg2)
+				throws IOException, InterruptedException {
+
+		}
+		
+	}
+	
+	
+
+}

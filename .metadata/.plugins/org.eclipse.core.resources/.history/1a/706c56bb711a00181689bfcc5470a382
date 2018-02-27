@@ -1,0 +1,88 @@
+import java.io.IOException;
+
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.conf.Configured;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.FloatWritable;
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapred.JobConf;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.mapreduce.Reducer;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
+import org.apache.hadoop.util.GenericOptionsParser;
+import org.apache.hadoop.util.Tool;
+import org.apache.hadoop.util.ToolRunner;
+
+
+public class AveragePrice_StockHigh {
+	
+		public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
+			/* Create a Job */
+			Job job = Job.getInstance();
+			job.setJarByClass(AveragePrice_StockHigh.class);
+			
+			/* Create map and reduce class */
+			job.setMapperClass(Avg_StockHighMapper.class);
+			
+	        /* Set Combiner */
+//			job.setCombinerClass(IpAddressReducer.class);
+			job.setReducerClass(Avg_StockHighReducer);
+			
+			/* Set output key and value class */
+			job.setOutputKeyClass(Text.class);
+			job.setOutputValueClass(IntWritable.class);
+			
+			/* Set Input and output format classes */
+			job.setInputFormatClass(TextInputFormat.class);
+			job.setOutputFormatClass(TextOutputFormat.class);
+		
+			
+			/* Set input & output format */
+			FileInputFormat.addInputPath(job, new Path(args[0]));
+			FileOutputFormat.setOutputPath(job, new Path(args[1]));
+			
+			System.exit(job.waitForCompletion(true) ? 0 : 1);
+
+	}
+	
+	public static class Avg_StockHighMapper extends Mapper<Object, Text, Text, FloatWritable> {
+		@Override
+		protected void map(Object key, Text value, Context context)
+				throws IOException, InterruptedException {
+			String[] temp = value.toString().split(",");
+			String symbol = new String(temp[1]);
+			Float stockHigh = new Float(temp[4]);
+			context.write(new Text(symbol), new FloatWritable(stockHigh));
+		}
+	}
+
+	/* Calculates the average */
+	public static class Avg_StockHighReducer extends Reducer<Text, FloatWritable, Text, FloatWritable> {		
+		@Override
+		protected void reduce(Text key, Iterable<FloatWritable> values, Context context) throws IOException, InterruptedException {
+			String symbol = key.toString();
+			Float sum = 0f;
+			int count = 0;
+			Float average = 0f;
+			for(FloatWritable val : values){
+				sum = sum + val.get();
+				count = count + 1;
+			}
+			average = (float) sum/count;
+			context.write(new Text(symbol), new FloatWritable(average));
+		} 
+
+	}
+	
+
+
+
+}
+
+
+
