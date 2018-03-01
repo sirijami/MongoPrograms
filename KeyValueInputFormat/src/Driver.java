@@ -23,7 +23,7 @@ public class Driver {
 		job.setJarByClass(Driver.class);
 		
 		job.setMapperClass(empMapper.class);
-//		job.setReducerClass(empReducer.class);
+		job.setReducerClass(empReducer.class);
 		job.setInputFormatClass(KeyValueTextInputFormat.class);
 		
 		job.setOutputKeyClass(Text.class);
@@ -38,18 +38,18 @@ public class Driver {
 
 	}
 	
-	public static class empMapper extends Mapper<Text, Text, Text, IntWritable> {
+	public static class empMapper extends Mapper<Text, Text, Text, Text> {
 
 		@Override
 		protected void map(Text key, Text value, Context context)
 				throws IOException, InterruptedException {
 			System.out.println("emp Name" + key);
 
-			context.write(new Text(key), new IntWritable(Integer.valueOf(value.toString())));
+			context.write(new Text(key), new Text(value));
 		}
 	}
 	
-	public class empReducer extends Reducer<Text,IntWritable,Text,IntWritable> {
+	public static class empReducer extends Reducer<Text,IntWritable,Text,IntWritable> {
 
 		@Override
 		protected void reduce(Text key, Iterable<IntWritable> values,Context context)
@@ -63,5 +63,6 @@ public class Driver {
 		
 
 	}
+	
 
 }

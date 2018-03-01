@@ -1,4 +1,0 @@
-import org.apache.hadoop.mapreduce.Mapper;
-public class WordMapper extends Mapper<KEYIN, VALUEIN, KEYOUT, VALUEOUT> {
-
-}
