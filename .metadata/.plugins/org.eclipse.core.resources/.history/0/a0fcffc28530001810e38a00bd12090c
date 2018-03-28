@@ -1,0 +1,10 @@
+
+public class MedianStdDevTuple {
+    private int standardDeviation = 0;
+    
+	public void set(int i) {
+		this.standardDeviation = i;
+		
+	}
+
+}

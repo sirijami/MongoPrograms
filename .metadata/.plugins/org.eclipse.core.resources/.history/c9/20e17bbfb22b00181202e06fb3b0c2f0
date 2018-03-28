@@ -1,0 +1,21 @@
+package Question2;
+
+import java.io.IOException;
+
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Mapper;
+
+public class minMaxTupleMapper extends Mapper<Object, Text, Text, minMaxTuple> {
+	
+	private Text stockSymbol = new Text();
+	private minMaxTuple outTuple = new minMaxTuple();
+
+	@Override
+	protected void map(Object key, Text value,
+			Mapper<Object, Text, Text, minMaxTuple>.Context context)
+			throws IOException, InterruptedException {
+         String[] str = 
+	}
+	
+
+}

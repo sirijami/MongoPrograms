@@ -1,0 +1,32 @@
+import java.io.IOException;
+
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Mapper;
+
+
+public class MedianSrdDevDrv {
+    /* Finding median and standard deviation without combiner optimization 
+     * The mapper will process each input record and calculate the median of ratings per movie
+     * The output key is the movie and the value is ratings*/
+	public static void main(String[] args) {
+		
+
+	}
+	
+	public static class MedianStdDevMapper extends Mapper<Object, Text, IntWritable, IntWritable>{
+
+		@Override
+		protected void map(Object key, Text value,
+				Mapper<Object, Text, IntWritable, IntWritable>.Context context)
+				throws IOException, InterruptedException {
+			String[] tokens = value.toString().split(",");
+			String movieId = tokens[1];
+			String ratings = tokens[2];
+			context.write(new IntWritable(Integer.parseInt(movieId)), new IntWritable(Integer.parseInt(ratings)));
+
+		}
+		
+	}
+
+}

@@ -1,0 +1,12 @@
+
+public class MedianStdDevDriver {
+	
+	public class MedianStdDevMapper extends Mapper{
+		
+	}
+	
+		
+}
+
+
+

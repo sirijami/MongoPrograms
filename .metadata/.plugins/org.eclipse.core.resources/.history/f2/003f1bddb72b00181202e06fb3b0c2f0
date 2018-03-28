@@ -1,0 +1,7 @@
+package Question2;
+
+import org.apache.hadoop.mapreduce.Reducer;
+
+public class minMaxTupleReducer extends Reducer<Text, minMaxTuple, Text, minMaxTuple> {
+
+}

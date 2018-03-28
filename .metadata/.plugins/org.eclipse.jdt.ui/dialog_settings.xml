@@ -5,8 +5,8 @@
 	<section name="DialogBounds_OverrideMethodDialog">
 		<item value="514" key="DIALOG_WIDTH"/>
 		<item value="113" key="DIALOG_Y_ORIGIN"/>
-		<item value="410" key="DIALOG_HEIGHT"/>
 		<item value="383" key="DIALOG_X_ORIGIN"/>
+		<item value="410" key="DIALOG_HEIGHT"/>
 		<item value="1|.Helvetica Neue DeskInterface|11.0|0|COCOA|1|.HelveticaNeueDeskInterface-Regular" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="OptionalMessageDialog.hide.">
@@ -18,8 +18,8 @@
 	<section name="org.eclipse.jdt.internal.ui.wizards.buildpaths.NewVariableEntryDialog">
 		<item value="557" key="DIALOG_WIDTH"/>
 		<item value="36" key="DIALOG_Y_ORIGIN"/>
-		<item value="347" key="DIALOG_HEIGHT"/>
 		<item value="97" key="DIALOG_X_ORIGIN"/>
+		<item value="347" key="DIALOG_HEIGHT"/>
 		<item value="1|.Helvetica Neue DeskInterface|11.0|0|COCOA|1|.HelveticaNeueDeskInterface-Regular" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="BuildPathsPropertyPage">
@@ -45,11 +45,11 @@
 		<item value="false" key="jarOptionsWizardPage.STORE_USE_SRC_FOLDERS"/>
 		<item value="" key="jarOptionsWizardPage.DESCRIPTION_LOCATION"/>
 		<list key="JarPackageWizardPage.DESTINATION_NAMES_ID">
-			<item value="SequenceFileOutputFormat/sequenceFileOutput.jar"/>
-			<item value="SequenceFileInputFormat/sequenceFileInput.jar"/>
-			<item value="NYSEAverragePrice_StockHighJob/NYSE_jar.jar"/>
-			<item value="RatingsPerMovieJob/RatingsPerMovieCount.jar"/>
-			<item value="MovieLensGenderCountJob/RatingsPerMovieCount.jar"/>
+			<item value="Assignment5-4/AverageUsingCombiner.jar"/>
+			<item value="Assignment5-3/SecondarySorting.jar"/>
+			<item value="Assignment5/SecondarySorting.jar"/>
+			<item value="Assignment5/src/Question3/SecondarySorting.jar"/>
+			<item value="/Users/sirishaepari/Downloads/eclipse/Eclipse.app/Contents/MacOS/Assignment5/src/Question3/SecondarySorting.jar"/>
 		</list>
 	</section>
 	<section name="RefactoringWizard.preview">
@@ -59,6 +59,7 @@
 	<section name="quick_assist_proposal_size">
 	</section>
 	<section name="SourceActionDialog.methods">
+		<item value="1" key="VisibilityModifier"/>
 		<item value="false" key="Comments"/>
 		<item value="false" key="SynchronizedModifier"/>
 		<item value="false" key="FinalModifier"/>
@@ -80,8 +81,19 @@
 	</section>
 	<section name="JavaElementSearchActions">
 	</section>
+	<section name="DialogBounds_GetterSetterTreeSelectionDialog">
+		<item value="519" key="DIALOG_WIDTH"/>
+		<item value="0" key="DIALOG_Y_ORIGIN"/>
+		<item value="639" key="DIALOG_HEIGHT"/>
+		<item value="381" key="DIALOG_X_ORIGIN"/>
+		<item value="1|.Helvetica Neue DeskInterface|11.0|0|COCOA|1|.HelveticaNeueDeskInterface-Regular" key="DIALOG_FONT_NAME"/>
+	</section>
 	<section name="NewClassWizardPage">
 		<item value="false" key="create_constructor"/>
 		<item value="true" key="create_unimplemented"/>
+	</section>
+	<section name="AddGetterSetterDialog">
+		<item value="false" key="RemoveFinal"/>
+		<item value="false" key="SortOrdering"/>
 	</section>
 </section>

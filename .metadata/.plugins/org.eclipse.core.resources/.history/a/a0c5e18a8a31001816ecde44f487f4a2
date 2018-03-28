@@ -1,0 +1,76 @@
+import java.io.IOException;
+
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.SortedMapWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.io.WritableComparable;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.mapreduce.Reducer;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+
+
+
+public class MedianStdDevUsingCombinerDriver {
+
+	
+	/* Key is the movie id and value is rating, one */
+	public static class MedianStdDevMapper extends Mapper<Object, Text, IntWritable, SortedMapWritable<WritableComparable<? super K>>>{
+		private static String MOVIE_ID = "MovieID";
+		private IntWritable rating = new IntWritable();
+		private IntWritable movie = new IntWritable();
+		private static final LongWritable ONE = new LongWritable(1);
+		
+		protected void map(Object key, Text value,
+				Mapper<Object, Text, IntWritable, SortedMapWritable<WritableComparable<? super K>>>.Context context)
+				throws IOException, InterruptedException {
+			String[] tokens = value.toString().split(",");
+			String movieId = tokens[1];
+            if(!movieId.equals(MOVIE_ID)){
+    			String ratings = tokens[2];
+    			movie.set(Integer.parseInt(movieId));
+    			rating.set(Integer.parseInt(ratings));
+    			SortedMapWritable<WritableComparable<? super K>> mapValue = new SortedMapWritable<>();
+    			mapValue.put(rating, ONE);
+    			context.write(movie, mapValue);	
+            }		
+		}	
+		
+		
+		
+	}
+	
+	public static class MedianStdDevReducer extends Reducer<IntWritable, SortedMapWritable<WritableComparable<? super K>>, IntWritable, MedianStdDevTuple>{
+		
+	}
+
+	public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
+	    Configuration conf = new Configuration();
+	    Job job = Job.getInstance(conf, "MedianStdDeviationUsingCustomCombiner");
+	    job.setJarByClass(MedianStdDevUsingCombinerDriver.class);
+	    
+	    job.setInputFormatClass(TextInputFormat.class);
+	    
+	    job.setMapperClass(MedianStdDevMapper.class);
+	    job.setReducerClass(MedianStdDevReducer.class);
+//	    
+//	    job.setOutputKeyClass(IntWritable.class);
+//	    job.setOutputValueClass(MedianStdDevTuple.class);
+//	    
+//	    job.setMapOutputKeyClass(IntWritable.class);
+//	    job.setMapOutputValueClass(IntWritable.class);
+	    
+	    
+	    FileInputFormat.addInputPath(job, new Path(args[0]));
+	    FileOutputFormat.setOutputPath(job, new Path(args[1]));
+	    System.exit(job.waitForCompletion(true) ? 0 : 1);
+
+
+	}
+
+}

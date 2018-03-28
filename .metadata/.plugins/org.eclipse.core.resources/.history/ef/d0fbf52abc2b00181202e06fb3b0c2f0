@@ -1,0 +1,13 @@
+package Question2;
+
+import org.apache.hadoop.mapreduce.Job;
+
+public class Driver {
+
+	public static void main(String[] args) {
+		Job job = Job.getInstance();
+		
+
+	}
+
+}

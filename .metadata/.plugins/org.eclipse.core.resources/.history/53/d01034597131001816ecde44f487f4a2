@@ -1,0 +1,38 @@
+
+
+import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Mapper;
+
+public class ssMapper extends Mapper<LongWritable, Text, IpAccessDateKey, IntWritable>{
+	Pattern logPattern = Pattern
+	         .compile("kkl");
+
+	@Override
+	protected void map(
+			LongWritable key,
+			Text value,
+			Mapper<LongWritable, Text, IpAccessDateKey, IntWritable>.Context context)
+			throws IOException, InterruptedException {
+		
+		String line = ((Text) value).toString();
+		Matcher matcher = logPattern.matcher(line);
+		if(matcher.matches()){
+			System.out.println("Regex matches");
+			String ipAddress = matcher.group(1);
+			Long accessDate = Long.parseLong(matcher.group(2));
+			System.out.println("accessDate " + accessDate);
+			IpAccessDateKey ipAccessDateKey = new IpAccessDateKey(ipAddress, accessDate);
+			context.write(ipAccessDateKey, new IntWritable(1));
+		}else{
+			System.out.println("regex doesn't matches");
+		}
+	}
+	
+
+}

@@ -1,0 +1,8 @@
+package Question3;
+
+/* IpAccessDateKey is the composite key. The natural key is the "IpAddress" 
+ * and the secondary sort will be performed on AccessDate.
+ * @author- sirisha epari*/
+public class IpAccessDateKey {
+
+}

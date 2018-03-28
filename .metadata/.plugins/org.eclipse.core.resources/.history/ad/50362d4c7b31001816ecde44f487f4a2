@@ -1,0 +1,58 @@
+
+
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Mapper;
+
+public class ssMapper extends Mapper<LongWritable, Text, IpAccessDateKey, IntWritable>{
+	public static String IP_FORMAT = "((?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){"
+			+ "3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))(?![\\d])";
+	
+	 public static String DATE_FORMAT = "\\d+\\/\\w+\\/\\d+\\:\\d+\\:\\d+\\:\\d+.[-+ ]\\d+" ;
+	 
+	 SimpleDateFormat dateFrmt = new SimpleDateFormat("dd/MM/yyyy:HH:mm:ss Z");
+	@Override
+	protected void map(
+			LongWritable key,
+			Text value,
+			Mapper<LongWritable, Text, IpAccessDateKey, IntWritable>.Context context)
+			throws IOException, InterruptedException {
+		
+		String line = ((Text) value).toString();
+		Pattern ipPattern = Pattern.compile(IP_FORMAT,Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
+		
+		Pattern datePattern = Pattern.compile(DATE_FORMAT, Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
+		
+		Matcher ipMatcher = ipPattern.matcher(line);
+	    if (m.find())
+	    {
+	        String ipaddress1 = m.group(1);
+	        String date = m.group(2);
+	        Date accessDate
+	        IpAccessDateKey ipAccessDateKey = new IpAccessDateKey(ipAddress1, ;
+	        context.write(ipAccessDateKey, new IntWritable(1));
+	        System.out.print("("+ipaddress1.toString()+")"+"\n");
+	    }
+		
+		
+
+		if(matcher.matches()){
+			System.out.println("Regex matches");
+			String ipAddress = matcher.group(1);
+			Long accessDate = Long.parseLong(matcher.group(2));
+			System.out.println("accessDate " + accessDate);
+			IpAccessDateKey 
+			context.write(ipAccessDateKey, new IntWritable(1));
+		}else{
+			System.out.println("regex doesn't matches");
+		}
+	}
+	
+
+}

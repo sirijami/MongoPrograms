@@ -1,0 +1,15 @@
+
+public class MedianStdDevTuple {
+    private int standardDeviation = 0;
+    private float median = 0;
+    
+	public void setStdDev(double d) {
+		this.standardDeviation = d;
+		
+	}
+
+	public void setMedian(float f) {
+		this.median = f;
+	}
+
+}

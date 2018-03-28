@@ -1,0 +1,56 @@
+import java.io.IOException;
+
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.SortedMapWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.mapreduce.Reducer;
+
+
+public class MedianStdDevDriver {
+	
+	public static class MedianStdDevMapper extends Mapper<Object, Text, IntWritable, SortedMapWritable<IntWritable>>{
+		private static final String MOVIE_ID = "MovieID";
+		private IntWritable outMovie = new IntWritable();
+		private IntWritable rating = new IntWritable();
+		private static final LongWritable ONE = new LongWritable(1);
+
+		@Override
+		protected void map(
+				Object key,
+				Text value,
+				Mapper<Object, Text, IntWritable, SortedMapWritable<IntWritable>>.Context context)
+				throws IOException, InterruptedException {
+			
+			String[] token = value.toString().split(",");
+			if(!MOVIE_ID.equals("MovieID")){
+				outMovie.set(Integer.parseInt(token[1]));
+				SortedMapWritable<IntWritable> outRating = new SortedMapWritable<IntWritable>();
+				outRating.put(rating, ONE);
+				context.write(outMovie, outRating);				
+			}
+		}		
+	}
+	
+	public static class MedianStdDevReducer extends Reducer<IntWritable, SortedMapWritable<IntWritable>, IntWritable, MedianStdDevTuple>{
+		private MedianStdDevTuple result = MedianStdDevTuple();
+		
+		
+
+
+		
+	}
+
+	public static MedianStdDevTuple MedianStdDevTuple() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	
+		
+}
+
+
+

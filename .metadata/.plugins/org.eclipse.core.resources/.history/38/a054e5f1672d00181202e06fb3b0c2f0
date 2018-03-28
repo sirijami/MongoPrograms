@@ -1,0 +1,82 @@
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.FloatWritable;
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.mapreduce.Reducer;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+
+
+public class avg_stock_price_adj_closeDriver {
+	
+	public static class avgMapper extends Mapper<LongWritable, Text, IntWritable, countAverageTuple> {
+		
+		private IntWritable outYear = new IntWritable();
+		private countAverageTuple outCountAverage = new countAverageTuple();
+		
+
+		@Override
+		protected void map(
+				LongWritable key,
+				Text value,
+				Mapper<LongWritable, Text, IntWritable, countAverageTuple>.Context context)
+				throws IOException, InterruptedException {
+			
+			String[] tokens = value.toString().split(",");
+			float avg_stock_price_adj_close = Float.parseFloat(tokens[8]);
+			String StringDate = tokens[1];
+			try {
+				Date date = new SimpleDateFormat("YYYY").parse(StringDate);
+				System.out.println("Date " + date);
+				long ms = date.getTime();
+				outCountAverage.setCount(1);
+				outCountAverage.setAverage()
+				
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			context.write(outYear, outCountAverage);
+		}
+		
+
+
+		
+		
+	}
+	
+	public static class avgReducer extends Reducer<Text, FloatWritable, Text, FloatWritable>{
+		
+	}
+	
+	public static void main (String[] args) throws IOException, ClassNotFoundException, InterruptedException{
+		Configuration conf = new Configuration();
+		Job job = Job.getInstance(conf, "AvgOfStockPriceAdjacent");
+		job.setJarByClass(avg_stock_price_adj_closeDriver.class);
+	    job.setMapperClass(avgMapper.class);
+	    job.setCombinerClass(avgReducer.class);
+	    job.setReducerClass(avgReducer.class);
+	    
+	    job.setOutputKeyClass(Text.class);
+	    job.setOutputValueClass(IntWritable.class);
+	    
+	    FileInputFormat.addInputPath(job, new Path(args[0]));
+	    FileOutputFormat.setOutputPath(job, new Path(args[1]));
+	    
+	    System.exit(job.waitForCompletion(true) ? 0 : 1);
+		
+	}
+
+}
+
+
