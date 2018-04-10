@@ -1,0 +1,8 @@
+import org.apache.hadoop.hdfs.util.EnumCounters.Map;
+import org.apache.hadoop.io.NullWritable;
+import org.apache.hadoop.mapreduce.Mapper;
+
+
+public class CountErrorByErrorTypeMapper extends Mapper<Object, Text, NullWritable, NullWritable> {
+
+}

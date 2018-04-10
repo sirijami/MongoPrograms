@@ -1,7 +1,0 @@
-package Question2;
-
-import org.apache.hadoop.io.Writable;
-
-public class minMaxTuple implements Writable {
-
-}

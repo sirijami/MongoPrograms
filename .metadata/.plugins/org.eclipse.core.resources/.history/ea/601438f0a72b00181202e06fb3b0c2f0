@@ -1,5 +1,0 @@
-package Question2;
-
-public class minMaxTupleMapper extends Mapper {
-
-}

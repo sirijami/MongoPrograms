@@ -1,0 +1,46 @@
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.HashSet;
+
+import org.apache.hadoop.hdfs.util.EnumCounters.Map;
+import org.apache.hadoop.io.NullWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Mapper;
+
+
+public class CountErrorByErrorTypeMapper extends Mapper<Object, Text, NullWritable, NullWritable> {
+	private static final String ERRORTYPE_COUNTER_GROUP = "errorType";
+	private static final String UNKNOWN_COUNTER = "Unknown";
+	private static final String NULL_OR_EMPTY_COUNTER = "Null or Empty";
+	
+	private String[] errorTypeArray = new String[]{"File does not exist:", "script", 
+			"client sent HTTP/1.1 request without hostname (see RFC2616 section 14.23):"			
+	};
+	private HashSet<String> ErrorType = new HashSet<>(Arrays.asList(errorTypeArray));
+	@Override
+	protected void map(Object key, Text value,
+			Mapper<Object, Text, NullWritable, NullWritable>.Context context)
+			throws IOException, InterruptedException {
+		
+		String[] tokens = value.toString().split(" ");
+		String eType = tokens[3];
+		if(eType != null && !eType.isEmpty()){
+			
+			// for each token 
+			boolean unknown = true;
+			for(String s: tokens){
+				if(ErrorType.contains(eType)){
+					context.getCounter(ERRORTYPE_COUNTER_GROUP, s).increment(1);
+					unknown = false;
+					break;
+				}				
+			}
+
+		}
+
+	}
+	
+	
+	
+
+}
