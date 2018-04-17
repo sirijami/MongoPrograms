@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<item value="180" key="org.eclipse.jdt.debug.ui.jre_preference_page_context.columnWidth0"/>
-	<item value="1" key="org.eclipse.jdt.debug.ui.jre_preference_page_context.sortColumn"/>
 	<item value="364" key="org.eclipse.jdt.debug.ui.jre_preference_page_context.columnWidth1"/>
+	<item value="1" key="org.eclipse.jdt.debug.ui.jre_preference_page_context.sortColumn"/>
 	<item value="75" key="org.eclipse.jdt.debug.ui.jre_preference_page_context.columnWidth2"/>
 	<section name="org.eclipse.jdt.debug.ui.MAIN_METHOD_SELECTION_DIALOG">
 		<item value="true" key="ShowStatusLine"/>
-		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0A;&lt;History&gt;&#x0A;&lt;historyRootNode&gt;&#x0A;&lt;infoNode&gt;=WordDemo/src&amp;lt;{WordCountM.java[WordCountM&lt;/infoNode&gt;&#x0A;&lt;infoNode&gt;=WordCountJob/\/usr\/local\/Cellar\/hadoop\/3.0.0\/libexec\/share\/hadoop\/mapreduce\/hadoop-mapreduce-examples-3.0.0.jar&amp;lt;org.apache.hadoop.examples(WordCount.class[WordCount&lt;/infoNode&gt;&#x0A;&lt;infoNode&gt;=WordCount1/src&amp;lt;{WordCountD.java[WordCountD&lt;/infoNode&gt;&#x0A;&lt;/historyRootNode&gt;&#x0A;&lt;/History&gt;" key="History"/>
+		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0A;&lt;History&gt;&#x0A;&lt;historyRootNode&gt;&#x0A;&lt;infoNode&gt;=WordDemo/src&amp;lt;{WordCountM.java[WordCountM&lt;/infoNode&gt;&#x0A;&lt;infoNode&gt;=WordCountJob/\/usr\/local\/Cellar\/hadoop\/3.0.0\/libexec\/share\/hadoop\/mapreduce\/hadoop-mapreduce-examples-3.0.0.jar&amp;lt;org.apache.hadoop.examples(WordCount.class[WordCount&lt;/infoNode&gt;&#x0A;&lt;infoNode&gt;=WordCount1/src&amp;lt;{WordCountD.java[WordCountD&lt;/infoNode&gt;&#x0A;&lt;infoNode&gt;=MahoutRecommendations/\/Users\/sirishaepari\/Documents\/Mahout\/apache-mahout-distribution-0.13.0\/mahout-mr-0.13.0-job.jar&amp;lt;org.apache.hadoop.yarn.conf(YarnConfiguration.class[YarnConfiguration&lt;/infoNode&gt;&#x0A;&lt;infoNode&gt;=MahoutRecommendations/\/Users\/sirishaepari\/Documents\/Mahout\/apache-mahout-distribution-0.13.0\/mahout-mr-0.13.0-job.jar&amp;lt;org.apache.hadoop.yarn.client.cli(ApplicationCLI.class[ApplicationCLI&lt;/infoNode&gt;&#x0A;&lt;infoNode&gt;=Mahout/src\/main\/java&amp;lt;recommendation.Mahout{App.java[App&lt;/infoNode&gt;&#x0A;&lt;/historyRootNode&gt;&#x0A;&lt;/History&gt;" key="History"/>
 		<section name="DialogBoundsSettings">
 			<item value="600" key="DIALOG_WIDTH"/>
 			<item value="53" key="DIALOG_Y_ORIGIN"/>
-			<item value="340" key="DIALOG_X_ORIGIN"/>
 			<item value="500" key="DIALOG_HEIGHT"/>
+			<item value="340" key="DIALOG_X_ORIGIN"/>
 			<item value="1|.Helvetica Neue DeskInterface|11.0|0|COCOA|1|.HelveticaNeueDeskInterface-Regular" key="DIALOG_FONT_NAME"/>
 		</section>
 	</section>

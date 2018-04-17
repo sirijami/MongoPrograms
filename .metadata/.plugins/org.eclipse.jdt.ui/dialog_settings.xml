@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<item value="false" key="ProjectSelectionDialog.show_all"/>
-	<item value="/usr/local/Cellar/hadoop/3.0.0/libexec/share/hadoop/mapreduce" key="org.eclipse.jdt.ui.lastextjar"/>
+	<item value="/Users/sirishaepari/Documents/Mahout/apache-mahout-distribution-0.13.0/lib" key="org.eclipse.jdt.ui.lastextjar"/>
 	<section name="DialogBounds_OverrideMethodDialog">
 		<item value="514" key="DIALOG_WIDTH"/>
 		<item value="113" key="DIALOG_Y_ORIGIN"/>
@@ -45,11 +45,11 @@
 		<item value="false" key="jarOptionsWizardPage.STORE_USE_SRC_FOLDERS"/>
 		<item value="" key="jarOptionsWizardPage.DESCRIPTION_LOCATION"/>
 		<list key="JarPackageWizardPage.DESTINATION_NAMES_ID">
+			<item value="Diksha-Assignment6/UniqueIpAddress.jar"/>
 			<item value="Assignment6-3/CountErrorByErrorType.jar"/>
 			<item value="Assignment6-4/TopTenTotalDue.jar"/>
 			<item value="Assignment6-2/DistinctIpAddress.jar"/>
 			<item value="Assignment5-6/MedianStdDevUsingCombiner.jar"/>
-			<item value="Assignment5-3/SecondarySorting.jar"/>
 		</list>
 	</section>
 	<section name="RefactoringWizard.preview">

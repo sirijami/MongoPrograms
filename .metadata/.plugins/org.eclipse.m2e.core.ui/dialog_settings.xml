@@ -22,8 +22,15 @@
 	</section>
 	<section name="org.eclipse.m2e.core.pom.dependencies">
 	</section>
+	<section name="org.eclipse.m2e.core.ui.internal.dialogs.MavenRepositorySearchDialog">
+		<item value="489" key="height"/>
+		<item value="480" key="width"/>
+		<item value="83" key="y"/>
+		<item value="400" key="x"/>
+	</section>
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
+			<item value="/Users/sirishaepari/Documents/MongoPrograms/MahoutRecommendations"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
@@ -33,20 +40,17 @@
 			<item value="[groupId].[artifactId]-[version]"/>
 		</list>
 	</section>
-	<section name="org.eclipse.m2e.core.ui.internal.dialogs.MavenRepositorySearchDialog">
-		<item value="489" key="height"/>
-		<item value="480" key="width"/>
-		<item value="83" key="y"/>
-		<item value="400" key="x"/>
-	</section>
 	<section name="Maven2ProjectWizardArchifactPage">
 		<list key="groupId">
+			<item value="recommendation"/>
 			<item value="GroupTest"/>
 		</list>
 		<list key="package">
+			<item value="recommendation.Mahout"/>
 			<item value="GroupTest.artifactTest"/>
 		</list>
 		<list key="artifactId">
+			<item value="Mahout"/>
 			<item value="artifactTest"/>
 		</list>
 		<list key="projectNameTemplate">

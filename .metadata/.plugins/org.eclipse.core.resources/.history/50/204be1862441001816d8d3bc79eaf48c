@@ -1,0 +1,12 @@
+/* Add external jar files from downloaded mahout 
+ * mahout-mr-0.13.0.jar
+ * mahout-mr-0.13.0-job.jar 
+ * */
+public class MahoutRecommendationDemo {
+
+	public static void main(String[] args) {
+		//Create a data Model
+
+	}
+
+}

@@ -1,0 +1,35 @@
+import java.io.IOException;
+import java.util.StringTokenizer;
+
+import org.apache.hadoop.io.NullWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Mapper;
+
+
+public class DistinctPatternDriver {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+	
+	
+	public class DistinctPatternMapper extends Mapper<Object, Text, Text, NullWritable>{
+
+		@Override
+		protected void map(Object key, Text value,
+				Mapper<Object, Text, Text, NullWritable>.Context context)
+				throws IOException, InterruptedException {
+			StringTokenizer tokens = new StringTokenizer(value.toString());
+			System.out.println("tokens " + tokens);
+
+		}
+		
+		
+	}
+	
+	public class DistinctPatterReducer{
+		
+	}
+
+}
